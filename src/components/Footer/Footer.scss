@@ -1,0 +1,31 @@
+@import "../../sass/variables";
+
+.footer {
+  background-color: $color-theme-3;
+  color: #fff;
+  grid-column: full-start/full-end;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+  &__content {
+    color: #fff;
+    font-size: 1.2rem;
+
+    a {
+      display: inline-block;
+      transition: all 0.2s;
+      padding-bottom: 0.1rem;
+      &:link,
+      &:visited {
+        color: $color-primary;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+      &:hover,
+      &:active {
+        border-bottom: 1px solid $color-primary;
+      }
+    }
+  }
+}

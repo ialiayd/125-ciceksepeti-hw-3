@@ -1,0 +1,68 @@
+@import "../../sass/variables";
+
+.navigation {
+  grid-column: full-start/full-end;
+  grid-row: 1 /2;
+  z-index: 100;
+  background-color: #fff;
+  border-bottom: $color-grey-light-4;
+  box-shadow: $shadow-dark;
+
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(6rem, 1fr)
+    [center-start] repeat(8, [col-start] minmax(min-content, 15rem) [col-end])
+    [center-end] minmax(6rem, 1fr) [full-end];
+
+  align-items: center;
+  justify-items: space-between;
+
+  &__container {
+    height: 6rem;
+    grid-column: center-start/center-end;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo-box {
+    margin-top: 0.5rem;
+  }
+
+  &__logo {
+    height: 4.5rem;
+    width: auto;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+
+    &-item {
+      display: inline-block;
+      font-size: 1.6rem;
+
+      &:not(:last-child) {
+        margin-right: 3rem;
+      }
+    }
+  }
+
+  &__link {
+    transition: all 0.2s;
+    &:visited,
+    &:link {
+      text-decoration: none;
+      color: $color-grey-dark-1;
+      font-weight: 400;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid transparent;
+    }
+
+    &:active,
+    &:hover {
+      color: $color-primary-dark;
+      border-bottom: 1px solid $color-primary-dark;
+    }
+  }
+}

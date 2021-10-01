@@ -1,0 +1,112 @@
+@import "../../sass/variables";
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+    animation: none;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: $color-primary-dark;
+  }
+  100% {
+    animation: none;
+  }
+}
+
+.header {
+  background-image: linear-gradient(to right, rgba(#000, 0.5), rgba(#000, 0.5)),
+    url(./jay-wennington-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  grid-column: full-start/full-end;
+  grid-row: 1 / 3;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+  }
+
+  &__heading {
+    color: #fff;
+    font-size: 4.8rem;
+    font-family: $font-heading;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-shadow: $shadow-light;
+
+    //Animation properties
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: 0.15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: 0.15em; /* Adjust as needed */
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    //Animation properties
+  }
+
+  &__search {
+    margin-top: 2rem;
+    width: 30%;
+    font-size: 1.4rem;
+  }
+
+  &__form {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 3px;
+    &--input,
+    &--btn {
+      border: none;
+      padding: 1rem 2rem;
+      display: block;
+      font-family: inherit;
+      font-weight: 400;
+      font-size: inherit;
+    }
+    &--input {
+      width: 80%;
+      transition: all 0.2s;
+      color: $color-grey-dark-2;
+      &:focus {
+        outline: none;
+        padding-right: 2.3rem;
+        padding-left: 2.3rem;
+      }
+      &::placeholder {
+        color: inherit;
+      }
+    }
+    &--btn {
+      width: 20%;
+      background: none;
+      background-color: $color-grey-light-3;
+      color: $color-grey-dark-1;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: $color-grey-light-4;
+      }
+      &:active {
+        text-decoration: underline;
+      }
+    }
+  }
+}

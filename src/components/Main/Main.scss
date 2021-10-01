@@ -1,0 +1,91 @@
+@import "../../sass/variables";
+
+.main {
+  grid-column: center-start/center-end;
+  padding-bottom: 3rem;
+
+  &__reviewed,
+  &__suggestions {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-gap: 2rem;
+  }
+
+  &__title {
+    font-size: 2.4rem;
+    grid-column: 1 / -1;
+  }
+}
+
+.restaurant__card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: $shadow-light;
+  transition: all 0.2s;
+
+  &:hover {
+    box-shadow: $shadow-light-hovered;
+    transform: scale(1.05);
+  }
+
+  &-img-box {
+    height: 15rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__img {
+    width: 100%;
+  }
+
+  &-review-box {
+    padding: 2rem;
+    padding-top: 1rem;
+  }
+
+  &-title {
+    font-size: 2rem;
+    font-family: $font-heading;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+  }
+
+  &-star-box {
+    margin-bottom: 0.5rem;
+  }
+
+  &-star {
+    backface-visibility: hidden;
+    fill: $color-primary-dark;
+    stroke: $color-primary-dark;
+    width: 2rem;
+    height: 2rem;
+
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+
+    &--unrated {
+      fill: #fff;
+      stroke-width: 3rem;
+    }
+  }
+
+  &-review,
+  &-address {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  &-action-box {
+    button:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+}
