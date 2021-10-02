@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Stars from './Stars';
-export default function Review({ review }) {
+function Review({ review, editReview, deleteReview, mode }) {
 
-    const { id, name, image_url, rating } = review;
-    const reviewText = "Güzel bir yemekti herkese tavsiye ediyorum";
+    const { id, name, image_url, rating, text, key } = review;
+
+    const handleEdit = () => {
+        editReview(review);
+    }
+
+    const handleDelete = () => {
+        deleteReview(review.id);
+    }
+
+
 
     return (
         <div className="restaurant__card restaurant__card--reviewed">
@@ -12,15 +21,17 @@ export default function Review({ review }) {
             </div>
             <div className="restaurant__card-review-box">
                 <h3 className="restaurant__card-title">{name}</h3>
-                <Stars rating={rating} />
+                <Stars key={key} rating={rating} mode={mode} />
                 <div className="restaurant__card-review">
-                    <p>&ldquo;{reviewText}&rdquo;</p>
+                    <p>&ldquo;{text}&rdquo;</p>
                 </div>
                 <div className="restaurant__card-action-box">
-                    <button className="btn btn--edit">Edit Review</button>
-                    <button className="btn btn--delete">Delete Review</button>
+                    <button onClick={handleEdit} className="btn btn--edit">Edit Review</button>
+                    <button onClick={handleDelete} className="btn btn--delete">Delete Review</button>
                 </div>
             </div>
         </div>
     )
 }
+
+export default Review;

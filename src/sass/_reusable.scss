@@ -15,7 +15,8 @@
     }
   }
 
-  &--add {
+  &--add,
+  &--review {
     background-color: $color-primary;
     &:hover,
     &:active {
@@ -36,6 +37,15 @@
     &:hover,
     &:active {
       background-color: $color-primary;
+    }
+  }
+
+  &--review {
+    padding: 1rem 2rem;
+    color: #fff;
+    transition: all 0.2s;
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

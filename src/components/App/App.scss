@@ -32,6 +32,7 @@ body {
 }
 
 .container {
+  position: relative;
   display: grid;
   grid-template-rows: 6rem 50vh minmax(50vh, min-content) 5rem;
   grid-template-columns:

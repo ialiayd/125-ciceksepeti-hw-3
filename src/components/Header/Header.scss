@@ -41,6 +41,10 @@
   align-items: center;
 
   &__title {
+    @media only screen and (max-width: 56.25em) {
+      width: 50%;
+      overflow: hidden;
+    }
   }
 
   &__heading {
@@ -50,6 +54,12 @@
     font-weight: 500;
     letter-spacing: 1px;
     text-shadow: $shadow-light;
+
+    @media only screen and (max-width: 56.25em) {
+      font-size: 3rem;
+      border-right: none;
+      animation: none;
+    }
 
     //Animation properties
     overflow: hidden; /* Ensures the content is not revealed until the animation */

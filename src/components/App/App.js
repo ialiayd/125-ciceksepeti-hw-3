@@ -10,22 +10,19 @@ import Footer from '../Footer/Footer';
 //COMPONENTS
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      restaurants: [],
-      reviewed: []
-    }
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     return (
       <div className="container" >
         <Nav />
         <Header />
-        <Main restaurants={this.state.restaurants} />
+        <Main />
         <Footer />
       </div>
+      //modal comes here
     );
   }
 }
