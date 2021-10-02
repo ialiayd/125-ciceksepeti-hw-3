@@ -8,7 +8,7 @@ class ApiService {
     }
     async getRestaurants() {
         // https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?locale=tr_TR&location=ist
-        const response = await fetch("/businesses/search?locale=tr_TR&location=ist&term=restaurants", {
+        const response = await fetch("https://api.yelp.com/v3/businesses/search?locale=tr_TR&location=ist&term=restaurants", {
             headers: {
                 'Authorization': this._auth,
                 'Content-Type': 'application/json',
