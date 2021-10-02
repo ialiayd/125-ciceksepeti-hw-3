@@ -12,7 +12,8 @@ class ApiService {
             headers: {
                 'Authorization': this._auth,
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Access-Control-Allow-Origin': '*'
             }
         });
 
