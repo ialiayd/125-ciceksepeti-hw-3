@@ -31,6 +31,10 @@ body {
   background-color: $color-grey-light;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .container {
   position: relative;
   display: grid;

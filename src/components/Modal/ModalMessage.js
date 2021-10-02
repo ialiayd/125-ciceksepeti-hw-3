@@ -8,7 +8,6 @@ function ModalMessage({ message, closeModal }) {
 
     return (
         <div className="modal">
-            <div className="modal__bg">&nbsp;</div>
             <div className="modal__message-wrapper">
                 <button onClick={handleClose} className="modal__close">&times;</button>
                 <h3 className="modal__title">{message} !</h3>

@@ -56,9 +56,12 @@
     text-shadow: $shadow-light;
 
     @media only screen and (max-width: 56.25em) {
-      font-size: 3rem;
+      font-size: 4rem;
       border-right: none;
       animation: none;
+      overflow: auto;
+      white-space: normal;
+      text-align: center;
     }
 
     //Animation properties
@@ -110,7 +113,7 @@
       background-color: $color-grey-light-3;
       color: $color-grey-dark-1;
       transition: all 0.2s;
-
+      cursor: pointer;
       &:hover {
         background-color: $color-grey-light-4;
       }

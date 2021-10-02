@@ -3,21 +3,33 @@
 class ApiService {
     constructor(apiKey) {
         // this.apiKey = apiKey;
-        this._apiKey = "9669wkZHVV65H7ig73dj_MIKaccfg2TzYtA3byu-pDYWvoAZUekjf4pEylqs42ZUeihlhByw0QW4DQbg9BYZnSQh97H2gJUxCvY1w-AfclgbhW2wrKD45QM4V321X3Yx";
-        this._auth = 'Bearer ' + this._apiKey;
+
+        this._enpoint = "https://6157ff895167ba00174bb9ed.mockapi.io/hw3/Restaurants"
     }
-    async getRestaurants() {
+    async getReviews() {
         // https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?locale=tr_TR&location=ist
-        const response = await fetch("https://api.yelp.com/v3/businesses/search?locale=tr_TR&location=ist&term=restaurants", {
-            headers: {
-                'Authorization': this._auth,
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            }
-        });
+        const response = await fetch(this._enpoint);
 
         return await response.json();
+    }
+
+    async deleteReview(id) {
+        const response = await fetch(`${this._enpoint}/${id}`, {
+            method: "DELETE"
+        });
+        const json = await response.json();
+
+        return json;
+    }
+
+    async editReview(data) {
+        const response = await fetch(`${this._enpoint}/${data.id}`, {
+            method: "PUT",
+            body: data
+        });
+        const json = await response.json();
+
+        return json;
     }
 }
 

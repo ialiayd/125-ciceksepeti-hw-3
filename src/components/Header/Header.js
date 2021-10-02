@@ -10,12 +10,12 @@ function Header() {
                     Wanna Rate Some? Let's Start!
                 </h1>
             </div>
-            {/* <div className="header__search">
+            <div className="header__search">
                 <form className="header__form">
                     <input placeholder="Search businesses" type="text" className="header__form--input" />
                     <button className="header__form--btn">Search</button>
                 </form>
-            </div> */}
+            </div>
         </header>
     )
 }

@@ -47,7 +47,7 @@ export default function ModalReview({ data, pushReview, mode, closeModal }) {
                             changeRating={changeRating} />
                     </div>
                     <div className="modal__input-group">
-                        <textarea value={dataState.text} onChange={handleChange} placeholder="Your review" className="modal__text" name="txt" id="" cols="30" rows="3"></textarea>
+                        <textarea value={dataState.text} onChange={handleChange} placeholder="Your review" className="modal__text" name="txt" id="" cols="60" rows="3"></textarea>
                     </div>
                     <button className="btn btn--review">Edit</button>
                 </form>
