@@ -19,6 +19,7 @@ function Main(props) {
     const [reviewToEdit, setReviewToEdit] = useState({});
     const modes = { edit: "edit", view: "view" }
 
+
     const apiService = useMemo(() => new ApiService(), []);
     const reviewsMemo = useMemo(() => reviews, [reviews]);
 
@@ -29,7 +30,7 @@ function Main(props) {
                 setLoader(true);
                 const data = await apiService.getReviews();
 
-                !reviews &&
+                (!reviews.length > 0) &&
                     setRewievs(data);
 
             } catch (error) {
@@ -116,8 +117,10 @@ function Main(props) {
                 </>
             </main>
             {
-                modalStatus && <ModalReview data={reviewToEdit}
-                    pushReview={pushReview} closeModal={closeModal}
+                modalStatus && <ModalReview
+                    data={reviewToEdit}
+                    pushReview={pushReview}
+                    closeModal={closeModal}
                     mode={modes.edit} />
             }
 

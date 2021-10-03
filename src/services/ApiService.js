@@ -8,9 +8,13 @@ class ApiService {
     }
     async getReviews() {
         // https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?locale=tr_TR&location=ist
-        const response = await fetch(this._enpoint);
+        try {
+            const response = await fetch(this._enpoint);
 
-        return await response.json();
+            return await response.json();
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     async deleteReview(id) {
