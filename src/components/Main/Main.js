@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 
 
 import ApiService from '../../services/ApiService';
@@ -19,21 +19,33 @@ function Main(props) {
     const [reviewToEdit, setReviewToEdit] = useState({});
     const modes = { edit: "edit", view: "view" }
 
-
-
-    const apiService = new ApiService();
+    const apiService = useMemo(() => new ApiService(), []);
+    const reviewsMemo = useMemo(() => reviews, [reviews]);
 
     useEffect(() => {
-        loadReviews()
-    }, []);
 
-    const loadReviews = () => {
-        setLoader(true);
-        apiService.getReviews().then(data => {
-            setRewievs(data);
-            setLoader(false);
-        });
-    }
+        const loadReviews = async () => {
+            try {
+                setLoader(true);
+                const data = await apiService.getReviews();
+
+                !reviews &&
+                    setRewievs(data);
+
+            } catch (error) {
+                console.log(error)
+            }
+            finally {
+                setLoader(false);
+            }
+        }
+        loadReviews()
+        // const id = setTimeout(() => {
+        //     loadReviews();
+        // }, 1000);
+
+        // clearTimeout(id)
+    }, [reviews, apiService]);
 
     const editReview = (review) => {
         setReviewToEdit({
@@ -48,15 +60,17 @@ function Main(props) {
 
         const temp = [...reviews];
         temp.splice(index, 1, dataSet);
+
         setRewievs(temp);
 
         apiService.editReview(dataSet)
             .then(res => {
+                console.log(res)
             }).catch(err => console.log(err));
 
         setModalStatus(false);
         setModalMessage("Edited");
-        setModalMessageStatus(true)
+        setModalMessageStatus(true);
         document.querySelector("body").classList.add("modal-open");
         closeModal();
     }
@@ -94,7 +108,7 @@ function Main(props) {
                             <section className="main__reviewed">
                                 <h2 className="main__title">Your Reviews</h2>
                                 {
-                                    reviews.map(r => (<Review key={r.id} review={r}
+                                    reviewsMemo.map(r => (<Review key={r.id} review={r}
                                         editReview={editReview}
                                         deleteReview={deleteReview}
                                         mode={modes.view} />)
