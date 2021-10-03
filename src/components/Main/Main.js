@@ -39,12 +39,9 @@ function Main(props) {
                 setLoader(false);
             }
         }
-        loadReviews()
-        // const id = setTimeout(() => {
-        //     loadReviews();
-        // }, 1000);
 
-        // clearTimeout(id)
+        loadReviews();
+
     }, [reviews, apiService]);
 
     const editReview = (review) => {
